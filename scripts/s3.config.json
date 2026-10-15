@@ -1,0 +1,7 @@
+{
+  "bucket": "bhagwati-temple-assets",
+  "region": "eu-north-1",
+  "prefix": "heritage",
+  "profile": "bhagwati",
+  "deliveryBaseUrl": "https://d3r1rz9vzkap30.cloudfront.net/heritage"
+}

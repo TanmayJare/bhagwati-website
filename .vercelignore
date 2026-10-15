@@ -1,0 +1,15 @@
+node_modules
+.git
+.aws
+.env.local
+.env.*.local
+bhagwati-assets
+bhagavati_heritage_website_updated
+s3-assets
+verification
+test-results
+tests
+playwright.config.js
+public/images/gallery
+vercel-ready
+vercel-ready.zip

@@ -1,0 +1,39 @@
+{
+  "name": "bhagavati-heritage-archive",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "vite build && node scripts/finalize-build.mjs",
+    "preview": "vite preview --host 127.0.0.1",
+    "check": "node scripts/validate-data.mjs",
+    "test": "playwright test",
+    "assets:prepare": "node scripts/prepare-assets.mjs",
+    "assets:upload": "node scripts/upload-assets.mjs",
+    "assets:dry-run": "node scripts/upload-assets.mjs --dry-run"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "lucide-react": "^1.57.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-router-dom": "^7.18.4"
+  },
+  "private": true,
+  "type": "module",
+  "devDependencies": {
+    "@aws-sdk/client-s3": "^3.1152.0",
+    "@aws-sdk/credential-providers": "^3.1152.0",
+    "@napi-rs/canvas": "^1.0.11",
+    "@playwright/test": "^1.64.1",
+    "@tailwindcss/vite": "^4.3.3",
+    "pdfjs-dist": "^6.4.299",
+    "tailwindcss": "^4.3.3",
+    "vite": "^8.3.4"
+  },
+  "engines": {
+    "node": "22.x"
+  }
+}

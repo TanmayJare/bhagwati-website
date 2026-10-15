@@ -1,0 +1,5 @@
+import React,{useState} from 'react';
+import {useLanguage} from '../Language';
+import {assetUrl,displayPhotoUrl} from '../assetUrl';
+export function ArchiveImage({photo,thumbnail=false,...props}){const {local,t}=useLanguage();const [failed,setFailed]=useState(false);return failed?<div className="image-unavailable" role="img" aria-label={local(photo.title)}>{t('photoFailed')}</div>:<img src={thumbnail?displayPhotoUrl(photo):assetUrl(photo.src)} alt={local(photo.title)} width={photo.width} height={photo.height} loading="lazy" decoding="async" onError={()=>setFailed(true)} {...props}/>}
+export default function GalleryGrid({photos,onSelect,mode='grid'}){const {local,t}=useLanguage();return <div className={'gallery-grid '+mode}>{photos.map((photo,i)=><button className="photo-card" key={photo.id} onClick={()=>onSelect(i)} aria-label={local(photo.title)||t('zoom')}><ArchiveImage photo={photo} thumbnail loading="lazy"/><span><strong>{local(photo.title)}</strong><small>{photo.year}{local(photo.caption)?' · '+local(photo.caption):''}</small></span></button>)}</div>}

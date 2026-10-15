@@ -1,0 +1,20 @@
+import React from 'react';
+import {Link} from 'react-router-dom';
+import {ArrowUpRight,ArrowDown,MapPin,Flower2,BookOpen,Users} from 'lucide-react';
+import {assetUrl} from '../assetUrl';
+import {useLanguage} from '../Language';
+import {content} from '../data/siteContent';
+import {committee} from '../data/committee';
+import {publications} from '../data/publications';
+import PublicationCard from '../components/PublicationCard';
+import HomepagePhotos from '../components/HomepagePhotos';
+export default function Home(){const {t,local,lang}=useLanguage();return <>
+ <section className="hero container"><div className="hero-copy"><div className="eyebrow"><span className="little-line"/>{t('identity')}</div><h1>{t('homeTitle')}<br/>{t('homeTitle2')}<br/><em>{t('homeTitle3')}</em></h1><div className="invocation">{t('invocation')}</div><p>{t('intro')}</p><div className="actions"><Link to="/heritage" className="button">{t('explore')}<ArrowUpRight size={18}/></Link><Link className="text-link" to="/archive">{t('publications')}<ArrowUpRight size={17}/></Link></div><div className="hero-location"><MapPin size={15}/>{t('place')}<span>•</span>{t('since')}</div></div><div className="hero-art"><div className="art-top"><span>॥ श्री भगवती प्रतिष्ठान ॥</span><span>०१</span></div><div className="arch-frame"><div className="arch-inner"><img src={assetUrl('/images/annual-report-cover.png')} fetchPriority="high" decoding="async" alt={lang==='en'?'Shri Bhagavati Devi illustration from the original annual report':'मूळ वार्षिक अहवालातील श्री भगवती देवीचे चित्र'}/></div></div><div className="art-bottom"><span>{t('heroNote')}</span><Flower2 size={24} strokeWidth={1}/></div></div></section>
+ <div className="heritage-strip"><div className="container"><span>॥ ग्रामदेवता श्री चंडिका देवी प्रसन्न ॥</span><span className="strip-flower">✳</span><span>श्री भगवती प्रतिष्ठान, नळेघर</span><span className="strip-flower">✳</span><span>{t('preserve')}</span></div></div>
+ <section className="section container introduction"><div><span className="eyebrow">{t('kuldevi')}</span><h2>{local(content.kuldevi.title)}</h2><Link to="/kuldevi" className="text-link">{t('kuldevi')}<ArrowUpRight size={18}/></Link></div><div><p className="lead">{t('intro2')}</p><p>{local(content.kuldevi.sections[1].text)}</p></div></section>
+ <section className="section parchment"><div className="container"><div className="section-heading"><div><span className="eyebrow">{t('story')}</span><h2>{local(content.heritage.title)}</h2></div><span className="section-number">01 / 03</span></div><div className="story-grid">{[{key:'heritage',icon:BookOpen},{key:'about',icon:Users},{key:'traditions',icon:Flower2}].map(({key,icon:Icon},i)=><Link className="story-card" to={'/'+key} key={key}><div className="story-card-top"><Icon size={27} strokeWidth={1.2}/><span>0{i+1}</span></div><h3>{t(key)}</h3><p>{local(content[key].intro)}</p><span className="text-link">{t('learn')}<ArrowUpRight size={18}/></span></Link>)}</div></div></section>
+ <section className="section publication-section"><div className="container"><PublicationCard publication={publications[0]}/></div></section>
+ <section className="section container"><HomepagePhotos/></section>
+ <section className="section parchment"><div className="container community-home"><div><span className="eyebrow">{t('community')}</span><h2>{t('communityTitle')}</h2><p>{t('communityText')}</p><Link to="/community" className="text-link">{t('community')}<ArrowUpRight size={18}/></Link></div><div className="officers">{committee.slice(0,3).map(person=><div key={person.name}><span className="eyebrow">{local(person.role)}</span><h3>{person.name}</h3><small>{lang==='en'?person.englishName:'कार्यकारी मंडळ २०२६'}</small></div>)}</div></div></section>
+ <section className="section container support-home"><Flower2 size={42} strokeWidth={1}/><span className="eyebrow">{t('contributionLabel')}</span><h2>{t('donateTitle')}</h2><p>{t('donateText')}</p><Link to="/donate" className="button">{t('contribute')}<ArrowUpRight size={18}/></Link></section>
+ </>}
