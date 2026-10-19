@@ -45,7 +45,7 @@ test('offscreen and hidden collages do not circulate or prefetch',async({page})=
  await page.clock.install();
  const requests=[];page.on('request',r=>{if(r.url().includes('/images/gallery/'))requests.push(r.url())});
  await page.goto('/');await page.waitForLoadState('networkidle');
- await expect(page.locator('.brand img')).toHaveAttribute('src',delivered('/images/bhagavati-logo.svg'));
+ await expect(page.locator('.brand img')).toHaveAttribute('src',delivered('/images/replacement1.jpeg'));
  const image=page.locator('.memory-collage-grid.current img').first();
  const src=await image.getAttribute('src'),baseline=requests.length;
  await page.clock.runFor(20000);
